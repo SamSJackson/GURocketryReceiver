@@ -6,9 +6,8 @@
 Ground ground;
 
 void setup() {
-  pinMode(LED_BUILTIN, OUTPUT);
-  Serial.begin(9600);
-
+  Serial.begin(115200);
+  Serial.println("Started");
   ground = Ground();
   Serial.println("Setting up ground");
   ground.setup();
@@ -17,5 +16,7 @@ void setup() {
 
 void loop() {
   String message = ground.receiveData();
-  Serial.println(message);
+  if (message) { 
+    Serial.println(message);
+  }
 }
